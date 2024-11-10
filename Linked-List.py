@@ -72,6 +72,23 @@ class LinkedList:
             temp = temp.next
             
             
+            
+    def has_cycle(head):
+        
+        slow = head 
+        fast = head 
+        
+        while fast and fast.next:
+            
+            slow = slow.next 
+            fast = fast.next.next
+            
+            if slow == fast:
+                return True
+            
+        return False
+            
+            
 
 
 list1 = LinkedList()
@@ -85,4 +102,17 @@ list1.print_list()
 
 list1.delete_node(2)
 list1.print_list()
+
+cycle_list = LinkedList()
+cycle_list.append(1)
+cycle_list.append(2)
+cycle_list.append(3)
+cycle_list.append(4)
+
+cycle_list.print_list()
+
+#Create a cycle 
+cycle_list.head.next.next.next.next = cycle_list.head
+
+print(LinkedList.has_cycle(cycle_list.head))
 
